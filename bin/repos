@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# repos 
+# requires: hub
+#
+# Prints name of all personal repositories
+hub api graphql --paginate -F query=@repos.graphql | jq -r '.data.viewer.repositories.nodes[].nameWithOwner'
+
