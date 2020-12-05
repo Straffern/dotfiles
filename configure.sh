@@ -129,17 +129,6 @@ tmuxTpmInstall () {
     fi
 }
 
-fubectlInstall () {
-    # fubectl install
-    # todo - move to after ~/bin check on bootstrap
-    if [ -f "$HOME/bin/fubectl.source" ]; then
-        info 'fubectl.source already exists'
-    else
-        echo "Now installing fubectl..."
-        curl -o "$HOME/bin/fubectl.source" -LO https://rawgit.com/kubermatic/fubectl/master/fubectl.source && success "fubectl placed in $HOME/bin"
-    fi
-}
-
 vundleInstall () {
     if [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
         info 'vundle already exists'
@@ -195,7 +184,6 @@ ohmyzshPluginInstall
 pl9kInstall
 pl10kInstall
 tmuxTpmInstall
-fubectlInstall
 
 #vim setup
 vundleInstall
@@ -235,7 +223,5 @@ else
 	echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added zsh-syntax-highlighting to .zshrc..."
 	echo ''
 	echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added zsh-autosuggestions to .zshrc..."
-	echo ''
-    echo "[ -f ~/bin/fubectl.source ] && source ~/bin/fubectl.source" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added fubectl to .zshrc..."
-	
+	echo ''	
 fi

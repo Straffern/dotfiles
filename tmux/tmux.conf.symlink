@@ -42,7 +42,6 @@ bind | split-window -h -c '#{pane_current_path}' # vertical pane
 bind - split-window -v -c '#{pane_current_path}' # horizontal pane
 
 
-
 unbind '"'
 unbind %
 
