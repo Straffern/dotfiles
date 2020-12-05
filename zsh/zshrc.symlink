@@ -89,7 +89,7 @@ DEFAULT_USER="$(whoami)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sudo git history tmux tmuxinator zsh-autosuggestions zsh-completions zsh-z)
+plugins=(sudo git history tmux tmuxinator zsh-autosuggestions zsh-completions zsh-z virtualenv)
 
 # User configuration
 
@@ -114,12 +114,15 @@ plugins=(sudo git history tmux tmuxinator zsh-autosuggestions zsh-completions zs
 #---- CUSTOM ----
 #Powerlevel9k/Powerlevel10k settings
 # https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#p9kgt
+
 source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.p9kgt
 source $HOME/.functions
 source $HOME/.aliases
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time virtualenv)
 
 # autoload ----------------------------------------------------------------------
 autoload -Uz vcs_info 
@@ -146,7 +149,7 @@ ZSH_HIGHLIGHT_STYLES[path_approx]=fg=cyan
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red') # To have commands starting with `rm -rf` in red:
 
 #---- Export ----
-export PATH=$PATH:/Users/jessicadeen/bin
+export PATH=$PATH:/Users/alexander/bin
 export GOPATH=~/go 
 export PATH=$GOPATH/bin:$PATH
 export GOROOT=/usr/local/opt/go/libexec
@@ -155,6 +158,7 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export MONGO_PATH=/usr/local/mongodb 
 export PATH=$PATH:$MONGO_PATH/bin
+export PATH="/usr/local/anaconda3/bin:$PATH"
 #---- End Export ----
 
 #---- Source ----
@@ -163,3 +167,4 @@ source <(kubectl completion zsh)
 source $(dirname $(gem which colorls))/tab_complete.sh
 #---- End Source ----
 #---- END CUSTOM ----
+
