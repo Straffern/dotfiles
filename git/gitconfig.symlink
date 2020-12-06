@@ -31,5 +31,5 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
-[user]
-	password = cd40138b6783586debf42507982b8939072e8f9c
+[credential]
+	helper = osxkeychain

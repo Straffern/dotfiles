@@ -12,11 +12,11 @@ Plugin 'nightsense/seabird'
 Plugin 'tomasiser/vim-code-dark'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'preservim/nerdtree'
 " Added to improve Python workflow.
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 
-Plugin 'valloric/youcompleteme'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -65,8 +65,10 @@ nnoremap <space> za
 " Allow preview of docstring.
 let g:SimpylFold_docstring_preview=1
 " YouCompleteMe settings.
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"
+"let g:ycm_python_binary_path = 'python3.9'
 
 
 " Flagging unnecessary whitespaces.
@@ -76,6 +78,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
+" UTF-8 encoding
+set encoding=utf-8
 
 " ---------------
 "  End CUSTOM settings
@@ -91,7 +95,7 @@ set backspace=indent,eol,start
 set mouse=a
 autocmd VimEnter * NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeQuitOnOpen = 1

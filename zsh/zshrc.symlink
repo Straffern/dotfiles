@@ -160,6 +160,22 @@ export MONGO_PATH=/usr/local/mongodb
 export PATH=$PATH:$MONGO_PATH/bin
 export PATH="/usr/local/anaconda3/bin:$PATH"
 #---- End Export ----
+#---- Fix Conda conflicts with Brew ----
+brew() {
+    local -a conda_envs
+    while [ "$CONDA_SHLVL" -gt 0  ]; do
+        conda_envs=("$CONDA_DEFAULT_ENV" $conda_envs)
+        conda deactivate
+    done
+    command brew $@
+    local brew_status=$?
+    for env in $conda_envs; do
+        conda activate "$env"
+    done
+    unset env
+    return "$brew_status"
+}
+
 
 #---- Source ----
 [ -f ~/bin/fubectl.source ] && source ~/bin/fubectl.source
