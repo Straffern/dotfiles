@@ -5,3 +5,5 @@
 # Ignore vscode folder
 .vscode/
 
+# python stuff
+__pycache__/
